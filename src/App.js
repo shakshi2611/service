@@ -1,24 +1,36 @@
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
+import Logo from './Pages/Logo';
+import Frame2 from './Pages/Frame2';
+import Frame3 from './Pages/Frame3';
+import Frame4 from './Pages/Frame4';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import ForgotPassword from './Pages/ForgotPassword';
+import OtpPage from './Pages/ForgotPassword';
+import SelectLanguage from './Pages/SelectLanguage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/logo" element={<Logo />} />
+          <Route path="/frame2" element={<Frame2 />} />
+          <Route path="/frame3" element={<Frame3 />} />
+          <Route path="/frame4" element={<Frame4 />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/otppage" element={<OtpPage/>} />
+          <Route path="/selectlanguage" element={<SelectLanguage/>} />
+        </Routes>
+
+      </div>
+    </Router>
   );
 }
 
