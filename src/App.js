@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/logo" element={<Logo />} />
@@ -28,7 +27,6 @@ function App() {
           <Route path="/otppage" element={<OtpPage/>} />
           <Route path="/selectlanguage" element={<SelectLanguage/>} />
         </Routes>
-
       </div>
     </Router>
   );
