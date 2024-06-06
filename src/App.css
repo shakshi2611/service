@@ -2,7 +2,7 @@
 .image-box {
   width: 150px; 
   height: 150px; 
-  border-radius: 30px; 
+  border-radius: 10px; 
   overflow: hidden; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   display: flex;
@@ -37,7 +37,7 @@
 
 .circle {
   position: absolute; 
-  top: 390px; 
+  top: 360px; 
   width: 500px; 
   height: 500px; 
   background-color: white;
@@ -45,15 +45,197 @@
 
 }
 
-.text-overlay {
-  position: absolute;
-  color: black;
-  font-size: 24px; 
-  font-weight: bold; 
+.text-container {
   text-align: center;
-  top: 448px; 
-  width: 210px;
-  height: 28px;
-  left: 168px;
-  transform: translate(-50%, -50%); 
+  margin-bottom: 5px;
+  margin-top: 40px;
+}
+
+.text-container h1 {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.text-container p {
+  font-size: 15px;
+  color: #333;
+  
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+}
+
+.dot.active {
+  background-color: red;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 90px;
+}
+
+.next-button,
+.skip-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  Width: 308px;
+  Height: 46px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.next-button {
+  background-color: red;
+  color: white;
+}
+
+.skip-button {
+  background-color: #ccc;
+  color: #333;
+}
+
+
+.logo-box {
+  display: flex;
+  width: 120px; 
+  height: 120px; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  margin-top: -40px;
+  margin-left: 110px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fff;
+  position: relative;
+}
+
+.header {
+  display: flex; /* Added to center items vertically */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f05050;
+  color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.back-button {
+  margin-right: auto;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.title-topic {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.content {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.form-field {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.form-field label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #888;
+}
+
+.form-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+  padding-left: 40px;
+}
+
+.register-button {
+  background-color: #f05050;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #d94646;
+}
+
+.account-link {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
 }
