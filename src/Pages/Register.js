@@ -59,8 +59,8 @@ function Register() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-field">
-            <label htmlFor="firstName">First Name</label>
             <div className="input-icon">
+              <label htmlFor="firstName">First Name</label>
               <svg
                 width="24"
                 height="24"
@@ -83,8 +83,8 @@ function Register() {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="lastName">Last Name</label>
             <div className="input-icon">
+              <label htmlFor="lastName">Last Name</label>
               <svg
                 width="24"
                 height="24"
@@ -107,8 +107,8 @@ function Register() {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="phoneNumber">Phone Number</label>
             <div className="input-icon">
+              <label htmlFor="phoneNumber">Phone Number</label>
               <svg
                 width="24"
                 height="24"

@@ -8,7 +8,7 @@ import Frame4 from './Pages/Frame4';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import ForgotPassword from './Pages/ForgotPassword';
-import OtpPage from './Pages/ForgotPassword';
+import OtpPage from './Pages/OtpPage';
 import SelectLanguage from './Pages/SelectLanguage';
 
 function App() {
