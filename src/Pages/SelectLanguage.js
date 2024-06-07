@@ -1,15 +1,30 @@
 import React,{useState} from 'react'
 
 function SelectLanguage() {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const API_BASE_URL = 'https://your-api-base-url.com';
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
+  const handleLanguageChange = (event) => {
+    setSelectedLanguage(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Phone Number:", phoneNumber);
+    try {
+      // Make an API request to select the language
+      const response = await fetch(`${API_BASE_URL}/select-language`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ language: selectedLanguage })
+      });
+      // Handle response
+      console.log(response);
+    } catch (error) {
+      // Handle error
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -62,10 +77,10 @@ function SelectLanguage() {
               </svg>
             </div>
             <input
-              type="tel"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
+              type="text"
+              id="language"
+              value={selectedLanguage}
+              onChange={handleLanguageChange}
             />
           </div>
           <button type="submit" className="login-button">

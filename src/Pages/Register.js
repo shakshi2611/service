@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState }from "react";
 import { Link } from "react-router-dom";
 
 function Register() {
+  const API_BASE_URL = 'https://api.intechnicalservice.com';
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,12 +19,23 @@ function Register() {
     setPhoneNumber(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission here, e.g., send data to a backend server
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Phone Number:", phoneNumber);
+    try {
+      const response = await fetch(`${API_BASE_URL}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ firstName, lastName, phoneNumber })
+      });
+      const data = await response.json();
+      // Handle response
+      console.log(data);
+    } catch (error) {
+      // Handle error
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -143,3 +155,4 @@ function Register() {
 }
 
 export default Register;
+

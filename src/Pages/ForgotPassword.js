@@ -2,15 +2,29 @@ import React,{useState} from 'react'
 import { Link } from "react-router-dom";
 
 function ForgotPassword() {
+  const API_BASE_URL = 'https://api.intechnicalservice.com/';
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Phone Number:", phoneNumber);
+    try {
+      const response = await fetch(`${API_BASE_URL}/forgot-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ phoneNumber })
+      });
+      // Handle response
+      console.log(response);
+    } catch (error) {
+      // Handle error
+      console.error('Error:', error);
+    }
   };
   
   return (

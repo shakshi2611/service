@@ -2,15 +2,27 @@ import React,{useState} from 'react'
 import { Link } from "react-router-dom";
 
 function Login() {
+  const API_BASE_URL = 'https://your-api-base-url.comhttps://api.intechnicalservice.com/';
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Phone Number:", phoneNumber);
+    try {
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ phoneNumber })
+      });
+      console.log(response);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
