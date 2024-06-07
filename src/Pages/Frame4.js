@@ -1,13 +1,12 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Frame4() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(3);
   const navigate = useNavigate();
 
   const handleNextPage = () => {
-      setCurrentPage(currentPage + 1);
-      navigate("/Register");
+    navigate("/Register");
   };
 
   const handleSkipPage = () => {
@@ -23,10 +22,13 @@ function Frame4() {
       />
       <div className="circle">
         <div className="text-container">
-          <h1>Best Services For<br/> Your Home</h1>
+          <h1>
+            Best Services For
+            <br /> Your Home
+          </h1>
           <p>
-            Homecare is health care provided by a professional<br/> caregiver in the
-            individual home.
+            Homecare is health care provided by a professional
+            <br /> caregiver in the individual home.
           </p>
         </div>
         <div className="pagination">
@@ -35,20 +37,16 @@ function Frame4() {
           <div className={`dot ${currentPage === 3 ? "active" : ""}`}></div>
         </div>
         <div className="button-container">
-          {currentPage < 3 && (
-            <button className="next-button" onClick={handleNextPage}>
-              Next
-            </button>
-          )}
-          {currentPage < 3 && (
-            <button className="skip-button" onClick={handleSkipPage}>
-              Skip
-            </button>
-          )}
+          <button className="next-button" onClick={handleNextPage}>
+            Next
+          </button>
+          <button className="skip-button" onClick={handleSkipPage}>
+            Skip
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Frame4
+export default Frame4;

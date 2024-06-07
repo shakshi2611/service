@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -133,7 +134,9 @@ function Register() {
             Register
           </button>
         </form>
-        <div className="account-link">Your already have an account?</div>
+        <div className="account-link">
+          <Link to="/login">You already have an account?</Link>
+        </div>
       </div>
     </div>
   );

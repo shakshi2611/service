@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from "react-router-dom";
 
 function ForgotPassword() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -72,8 +73,16 @@ function ForgotPassword() {
             Continue
           </button>
         </form>
-        <div className="account-link-forgotpassword">You don't have an account?</div>
-        <div className="account-link-forgotpassword">You remember my password!</div>
+        <div className="account-link-forgotpassword">
+        <Link to="/register">
+          You don't have an account?
+          </Link>
+        </div>
+        <div className="account-link-forgotpassword">
+        <Link to="/login">
+          You remember your password!
+        </Link>
+        </div>
       </div>
     </div>
   )

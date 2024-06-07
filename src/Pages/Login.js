@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from "react-router-dom";
 
 function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -68,12 +69,20 @@ function Login() {
               onChange={handlePhoneNumberChange}
             />
           </div>
-          <div className="account-link-phone">Forgot Password?</div>
+          <div className="account-link-phone">
+            <Link to="/forgotpassword">
+            Forgot Password?
+            </Link>
+          </div>
           <button type="submit" className="login-button">
             Login
           </button>
         </form>
-        <div className="account-link">Your already have an account?</div>
+        <div className="account-link">
+          <Link to="/register">
+          You don't have an account?
+          </Link>
+        </div>
       </div>
     </div>
   )

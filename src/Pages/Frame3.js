@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function Frame3() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const navigate = useNavigate();
 
   const handleNextPage = () => {
