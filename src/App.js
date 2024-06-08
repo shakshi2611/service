@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter , Route, Routes} from "react-router-dom";
 import './App.css';
 import Logo from './Pages/Logo';
 import Frame2 from './Pages/Frame2';
@@ -13,7 +13,7 @@ import SelectLanguage from './Pages/SelectLanguage';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Routes>
           <Route path="/" element={<Logo/>} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="/selectlanguage" element={<SelectLanguage/>} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

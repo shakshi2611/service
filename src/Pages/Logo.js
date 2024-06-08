@@ -7,7 +7,7 @@ function Logo() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/frame2');
-    }, 3000); 
+    }, 5000); 
 
   
     return () => clearTimeout(timer);

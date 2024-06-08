@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "a0d4",
+      "firstName": "shakshi",
+      "lastName": "kumari",
+      "phoneNumber": "06205207046"
+    },
+    {
+      "id": "75d6",
+      "firstName": "shakshi",
+      "lastName": "kumari",
+      "phoneNumber": "06205207046"
+    },
+    {
+      "id": "80da",
+      "firstName": "shakshi",
+      "lastName": "kumari",
+      "phoneNumber": "06205207046"
+    },
+    {
+      "id": null,
+      "firstName": "shakshi",
+      "lastName": "kumari",
+      "phoneNumber": "06205207046"
+    },
+    {
+      "id": null,
+      "firstName": "shakshi",
+      "lastName": "kumari",
+      "phoneNumber": "06205207046"
+    },
+    {
+      "id": null,
+      "firstName": "shakshi",
+      "lastName": "",
+      "phoneNumber": "06205207046"
+    }
+  ]
+}

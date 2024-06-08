@@ -1,27 +1,54 @@
-import React,{useState} from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const API_BASE_URL = 'https://your-api-base-url.comhttps://api.intechnicalservice.com/';
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+  });
+  // const API_BASE_URL = 'https://your-api-base-url.com';
+  const [error, setError] = useState({});
+  const [valid, setvalid] = useState(true);
 
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let isvalid = true;
+    let validationErrors = {};
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+    if (formData.phoneNumber === "" || formData.phoneNumber === null) {
+      isvalid = false;
+      validationErrors.phoneNumber = "Phone number required";
+    } else if (
+      /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(
+        formData.phoneNumber
+      )
+    ) {
+      isvalid = false;
+      validationErrors.phoneNumber = "Phone number is not valid";
+    }
+
+    if (!isvalid) {
+      setError(validationErrors);
+      setvalid(isvalid);
+      return;
+    }
+
     try {
-      const response = await fetch(`${API_BASE_URL}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ phoneNumber })
-      });
-      console.log(response);
-    } catch (error) {
-      console.error('Error:', error);
+      const response =  axios.get("http://localhost:8000/users");
+      const user = response.data.find(user => user.phoneNumber === formData.phoneNumber);
+      
+      if (user) {
+        alert("OTP sent successfully");
+        navigate('/otppage');
+      } else {
+        validationErrors.phoneNumber = "Invalid phone number";
+        setError(validationErrors);
+        isvalid(false);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -59,7 +86,7 @@ function Login() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-field">
-            <div className="input-icon" >
+            <div className="input-icon">
               <label htmlFor="phoneNumber">Phone Number</label>
               <svg
                 width="24"
@@ -76,28 +103,25 @@ function Login() {
             </div>
             <input
               type="tel"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
+              name="phoneNumber"
+              onChange={(event) =>
+                setFormData({ ...formData, phoneNumber: event.target.value })
+              }
             />
           </div>
           <div className="account-link-phone">
-            <Link to="/forgotpassword">
-            Forgot Password?
-            </Link>
+            <Link to="/forgotpassword">Forgot Password?</Link>
           </div>
           <button type="submit" className="login-button">
             Login
           </button>
         </form>
         <div className="account-link">
-          <Link to="/register">
-          You don't have an account?
-          </Link>
+          <Link to="/register">You don't have an account?</Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

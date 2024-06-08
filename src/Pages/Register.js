@@ -1,40 +1,50 @@
 import React, { useState }from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
-  const API_BASE_URL = 'https://api.intechnicalservice.com';
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const API_BASE_URL = 'https://api.intechnicalservice.com';
 
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: ''
+  })
 
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
+  const [error, setError] = useState({})
+  const [valid, setvalid] = useState(true)
 
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let isvalid = true;
+    let validationErrors = {};
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(`${API_BASE_URL}/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ firstName, lastName, phoneNumber })
-      });
-      const data = await response.json();
-      // Handle response
-      console.log(data);
-    } catch (error) {
-      // Handle error
-      console.error('Error:', error);
+    if (formData.firstname === "" || formData.firstName === null) {
+      isvalid = false;
+      validationErrors.firstname = "First name required";
+    }
+
+    if (formData.lastname === "" || formData.lastName === null) {
+      isvalid = false;
+      validationErrors.lastname = "Last name required";
+    }
+
+    if (formData.phoneNumber === "" || formData.phoneNumber === null) {
+      isvalid = false;
+      validationErrors.phoneNumber = "Phone number required";
+    } else if(/^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(formData.phoneNumber)) {
+      isvalid = false;
+      validationErrors.phoneNumber = "Phone number is not valid";
+    }
+    
+    setError(validationErrors)
+    setvalid(isvalid)
+
+    if(Object.keys(validationErrors).length === 0 ) {
+      // axios.post(`${API_BASE_URL}/register`, formData)
+      await axios.post('http://localhost:8000/users', formData)
+      .then(result => console.log(result))
+      .catch(err => console.log(err))
     }
   };
 
@@ -70,6 +80,12 @@ function Register() {
             className="logo-image"
           />
         </div>
+        {
+          valid ? <></> :
+          <span className="text-danger">
+            {error.firstName}; {error.lastName}; {error.phoneNumber}
+          </span>
+        }
         <form onSubmit={handleSubmit}>
           <div className="form-field">
             <div className="input-icon">
@@ -90,9 +106,8 @@ function Register() {
             </div>
             <input
               type="text"
-              id="firstName"
-              value={firstName}
-              onChange={handleFirstNameChange}
+              name="firstName"
+              onChange={(event) => setFormData({...formData, firstName: event.target.value})}
             />
           </div>
           <div className="form-field">
@@ -114,9 +129,8 @@ function Register() {
             </div>
             <input
               type="text"
-              id="lastName"
-              value={lastName}
-              onChange={handleLastNameChange}
+              name="lastName"
+              onChange={(event) => setFormData({...formData, lastName: event.target.value})}
             />
           </div>
           <div className="form-field">
@@ -137,15 +151,23 @@ function Register() {
             </div>
             <input
               type="tel"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={handlePhoneNumberChange}
+              name="phoneNumber"
+              onChange={(event) => setFormData({...formData, phoneNumber: event.target.value})}
             />
           </div>
           <button type="submit" className="register-button">
             Register
           </button>
         </form>
+
+        {/* {!valid && (
+          <span className="text-danger">
+            {error.firstName && <span>{error.firstName} </span>}
+            {error.lastName && <span>{error.lastName} </span>}
+            {error.phoneNumber && <span>{error.phoneNumber}</span>}
+          </span>
+        )} */}
+
         <div className="account-link">
           <Link to="/login">You already have an account?</Link>
         </div>

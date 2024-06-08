@@ -346,3 +346,10 @@ button {
 button:hover {
   background-color: #3e8e41;
 }
+
+.text-danger {
+  color: #dc3545; 
+  font-weight: bold;
+  font-size: 14px; 
+  margin-top: 5px;
+}
